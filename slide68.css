@@ -1,0 +1,36 @@
+/*  Change 1: New font and increased base size */
+button {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20pt;
+    margin: 15px;
+    padding: 12px 24px;
+    transition: all 0.3s ease;
+}
+
+/* Change 2: Custom styling for the primary action button */
+button:not(.green-bg) {
+    background-color: #2196F3;
+    color: #ffffff;
+    border: 2px solid #0b7dda;
+}
+
+/* Change 3: Hover effect added to all buttons */
+button:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Change 4: Modified the danger button background to a bolder red */
+#danger-btn {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: 2px solid #ff0019;
+}
+
+/* Change 5: Swapped the original dark background of .green-bg to a brighter green */
+.green-bg {
+    background-color: #2ea44f;
+    color: #ffffff;
+    border: 2px solid #00ff48;
+}
