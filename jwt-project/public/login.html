@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <form method="post" action="http://localhost:89/login">
+        <input name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit" value="Login">
+    </form>
+    <script>
+    document.forms[0].onsubmit = async (e) => {
+        e.preventDefault();
+        const data = {
+            username: document.getElementsByTagName('input')[0].value,
+            password: document.getElementsByTagName('input')[1].value
+        };
+        const res = await fetch(document.forms[0].action, {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        if (res.status != 201) {
+            alert('Invalid username and/or password');
+        } else {
+            const json = await res.json();
+            const secretRes = await fetch('http://localhost:89/', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': 'bearer ' + json.token
+                }
+            });
+            const result = await secretRes.json();
+            alert('the secret data is: ' + result.data);
+        }
+    }
+    </script>
+</body>
+</html>
